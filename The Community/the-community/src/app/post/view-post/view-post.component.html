@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+      <hr />
+      <div class="col-md-9">
+        <div class="row post">
+          <div class="col-md-1">
+            <app-vote-button [post]="post"></app-vote-button>
+          </div>
+          <div class="col-md-11">
+            <span>
+              <span class="subreddit-text"><a class="post-url" href="">{{post.productName}}</a></span>
+              <span> . Posted
+                <!-- <span> {{post.duration}} </span> -->
+                by              
+                <a class="username" href="">{{post.userName}}</a>
+              </span>
+            </span>
+            <hr />
+            <a routerLink="" class="post-title">{{post.postName}}</a>
+            <div>
+              <p class="post-text" [innerHtml]="post.description"></p>
+            </div>
+            CreatedAt: {{post.createdDate|date:'shortDate'}}
+            <hr>
+            <div class="post-comment">
+              <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                <div class="form-group">
+                  <textarea class="form-control" [formControlName]="'text'" placeholder="Post comment"></textarea>
+                </div>
+                <button type="submit" class="login float-right">Comment</button>
+              </form>
+            </div>
+            <div style="margin-top: 10px;" *ngFor="let comment of comments">
+              <div class="username mx-2 my-1">
+                <a routerLink="/user-profile/{{comment.userName}}">{{comment.userName}}</a>
+                <button  type (click)="markAnswer(comment)" class="btnDiscard btn custom-btn mx-3">Mark Answer</button>
+              </div>
+
+              <div *ngIf="comment.isAnswer" class="comment answer" >
+                <b>{{comment.text}}</b>
+              </div>
+
+              <div *ngIf="!comment.isAnswer" class="comment" >
+                <b>{{comment.text}}</b>
+              </div>
+              <div class="time">
+                {{comment.createdDate|date:'shortDate'}}
+              </div>
+              {{comment.isAnswer}}
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <app-side-bar></app-side-bar>
+        <app-product-side-bar></app-product-side-bar>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,11 @@
+<div class="sidebar-view-product">
+    <div class="mx-1 mt-1" style="color: black; font-weight: bold">Browse Products</div>
+    <hr />
+    <div class="mx-2" *ngFor="let product of products">
+        <span class="mx-2 "><a href="/view-product/{{product.id}}">{{product.name}}</a></span>
+        <hr />
+    </div>
+    <div style="text-align: center" *ngIf="displayViewAll">
+        <a style="font-weight: bold" routerLink="/list-product">View All</a>
+    </div>
+</div>

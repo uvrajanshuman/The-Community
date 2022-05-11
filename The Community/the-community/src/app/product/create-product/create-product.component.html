@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+        <div class="create-product-container">
+            <form class="post-form" [formGroup]="createProductForm" (ngSubmit)="createProduct()">
+                <div class="form-group">
+                    <div class="create-product-heading mx-1">Add a Product</div>
+                    <hr />
+                    <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px"
+                        placeholder="Title">
+                    <textarea type="text" [formControlName]="'description'" style="width: 100%; margin-top: 5px"
+                        placeholder="Description"></textarea>
+                    <div>
+                        <div style="text-align: center; margin-top: 5px;" >
+                            <button (click)="discard()" class="btnDiscard mx-3">Discard</button>
+                            <button (click)="createProduct()" class="btnCreateSubreddit mx-3">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+        <div class="col-md-3">
+            <div class="sidebar">
+                <h5 class="guidelines">Posting to The-Community</h5>
+                <hr />
+                <ul>
+                    <li>Be Respectful to other users</li>
+                    <hr />
+                    <li>Behave like you would in real life</li>
+                    <hr />
+                    <li>Don't spam</li>
+                    <hr />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
